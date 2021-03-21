@@ -1,0 +1,115 @@
+@use 'colors';
+@use 'fonts';
+
+$modal-spacing-s: 8px;
+$modal-spacing-m: 16px;
+$modal-spacing-l: 24px;
+
+$modal-window-width: 420px;
+$modal-window-radius: 12px;
+$input-field-height: 32px;
+$input-field-radius: 4px;
+$input-field-width-s: 80px;
+$input-field-width-date: 140px;
+$input-textarea-height: 128px;
+
+.modal-container {
+  /*styling*/
+  background: colors.$white;
+  padding: $modal-spacing-l;
+  border-radius: $modal-window-radius;
+  width: $modal-window-width;
+  z-index: 7;
+
+  /*positioning*/
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-title {
+  padding: 0;
+  margin: 0;
+  margin-bottom: $modal-spacing-l;
+}
+
+.form-label {
+  padding: 0;
+  margin: 0;
+  color: colors.$black;
+  font-size: 16px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 1px solid colors.$dark-grey;
+  border-radius: $input-field-radius;
+  width: 100%;
+  padding-left: $modal-spacing-s;
+  font-size: fonts.$header4-size-small;
+  font-family: fonts.$common-font-stack;
+
+  &.field {
+    height: $input-field-height;
+  }
+
+  &.date {
+    height: $input-field-height;
+    width: $input-field-width-date;
+  }
+  &.number {
+    height: $input-field-height;
+    width: $input-field-width-s;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  &.textarea {
+    height: $input-textarea-height;
+    resize: none;
+    padding-top: $modal-spacing-s;
+  }
+}
+
+.form-group {
+  padding: 0 0 $modal-spacing-l 0;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  button {
+    width: 200px !important;
+  }
+}
+
+.dimmer {
+  z-index: 6;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.5);
+}

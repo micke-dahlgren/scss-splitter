@@ -1,0 +1,190 @@
+@use 'colors';
+@use 'fonts';
+
+.primary-button {
+  background-color: colors.$purple;
+  color: white;
+  border-radius: 30px;
+  font-family: fonts.$special-font-stack;
+  white-space: nowrap;
+  &:hover {
+    cursor: pointer;
+  }
+  &:focus {
+    outline: none;
+  }
+  img {
+    margin-right: 10px;
+  }
+  &-broad {
+    @extend .primary-button;
+    width: 100%;
+  }
+
+  &-pink {
+    @extend .primary-button;
+    background-color: colors.$pink;
+    color: black;
+    width: 200px;
+    height: 45px;
+    border-radius: 22.5px;
+
+    &-hollow {
+      @extend .primary-button;
+      width: 200px;
+      height: 45px;
+      border-radius: 22.5px;
+      border: solid 2px colors.$pink;
+      background-color: #ffffff;
+      color: black;
+    }
+
+    &-wide {
+      @extend .primary-button;
+      background-color: colors.$pink;
+      color: black;
+      width: 250px;
+      height: 45px;
+      border-radius: 22.5px;
+    }
+  }
+
+  &.broad {
+    width: 100%;
+  }
+  &.disabled {
+    background-color: colors.$placeholder-grey;
+  }
+  p {
+    font-size: 20px;
+    margin: 0px;
+  }
+}
+
+.secondary-button {
+  &:hover {
+    cursor: pointer;
+  }
+  background-color: white;
+  color: black;
+  border-color: colors.$purple;
+  border-radius: 30px;
+  border-width: 2px;
+  padding: 8px 16px;
+  margin: 10px 0px 10px 0px;
+  font-family: fonts.$special-font-stack;
+
+  &-pink {
+    @extend .secondary-button;
+    width: auto;
+    height: 33px;
+    border-radius: 24px;
+    font-size: 17px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    border: solid 2px colors.$pink;
+  }
+}
+
+.align-right {
+  display: block;
+  margin: auto;
+  width: 100%;
+}
+
+@media only screen and (min-width: 420px) {
+  .align-right {
+    position: absolute;
+    top: 19px;
+    right: 16px;
+    width: auto;
+  }
+}
+
+.btn-group {
+  display: inline-flex;
+  margin-top: 0px;
+  position: relative;
+  padding-right: 2px;
+
+  div {
+    label {
+      width: calc(100% - 22px);
+    }
+  }
+}
+
+.wide {
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  div {
+    flex-grow: 1;
+    box-sizing: border-box;
+  }
+}
+.two-wide {
+  width: 100%;
+
+  div {
+    width: 50%;
+  }
+}
+
+.btn-group label {
+  background-color: white;
+  border: 2px solid colors.$pink;
+  font-family: fonts.$special-font-stack;
+  font-size: fonts.$header3-size-small;
+  //TODO: make ending buttons have border radius
+  /*border-radius: 5px;*/
+  color: colors.$black;
+  padding: 10px 10px;
+  text-align: center;
+  cursor: pointer;
+  float: left;
+  min-width: 60px;
+  text-transform: uppercase;
+  &.disabled {
+    background-color: colors.$grey;
+    border: 2px solid colors.$grey;
+  }
+}
+
+.wide label {
+  display: block;
+  width: calc(100% - 22px);
+}
+
+.wide p {
+  display: block;
+  width: calc(100% - 22px);
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  clear: both;
+}
+
+.btn-group div:not(:last-child) label {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group label:hover {
+  background-color: colors.$light-pink;
+  &.disabled {
+    background-color: colors.$grey;
+    cursor: default;
+  }
+}
+
+.btn-group input:checked + label {
+  background-color: colors.$pink;
+}
+
+.btn-group input {
+  display: none;
+}
